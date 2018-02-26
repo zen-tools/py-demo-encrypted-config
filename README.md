@@ -56,7 +56,7 @@ test = sSXy7JVMDHOrJBgMq/V+oxSjUAaDNw4F/E5Yye3RrROAiKOxEwdlZegye/axotgntK2QV4kvE
 	ntfPtI3hTou4Fzb7wCx2ynB2DmhlUyaEaTaVnE0XA7B4EiP/mjYzDw9TcSZWwCEmHaeQMCMuZsFj
 	Kviz+9SI+yieF3IrnhZRR5k0FYS74NcAyMV+DWUA1Ht13X5EcqNqEQybqb6BDkPmWdvkumE1ax/w
 	0+G0gOgq56NrztnPWS8+t+wcadG8bXr73oHuCw==
-(venv) zen@devel:~/Desktop/ssl-settings$ ./app.py -c config-prod.ini
+$ ./app.py -c config-prod.ini
 Enter password:
 [2018-02-26 21:36:51,235] [INFO] main.test = Hello, World!
 ```
