@@ -20,20 +20,18 @@ def main(args):
     with open(args.key_file) as f:
         p_key = PKCS1_OAEP.new(RSA.importKey(f.read(), args.password))
 
-    enc_config = ConfigParser()
-    enc_config.add_section('main')
-    enc_config.set('main', 'private_key', args.key_file)
-
     config = ConfigParser()
-    config.read(args.input)
-    for section in config.sections():
-        if section != 'main':
-            enc_config.add_section(section)
-        for (key, val) in config.items(section):
-            enc_config.set(section, key, p_key.encrypt(val).encode('base64'))
+    enc_config = ConfigParser()
+    enc_config.read(args.input)
+    for section in enc_config.sections():
+        config.add_section(section)
+        for (key, val) in enc_config.items(section):
+            if (section, key) == ('main', 'private_key'):
+                continue
+            config.set(section, key, p_key.decrypt(val.decode('base64')))
 
     with open(args.output, 'w') as f:
-        enc_config.write(f)
+        config.write(f)
 
 
 if __name__ == '__main__':

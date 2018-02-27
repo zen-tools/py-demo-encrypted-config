@@ -9,7 +9,7 @@ $ # Generate RSA key
 $ ./tools/generate_key.py -k mykey.pem -p 12345
 
 $ # Encrypt config file
-$ ./tools/encrypt_config.py -s config-dev.ini -o config-prod.ini -k mykey.pem -p 12345
+$ ./tools/encrypt_config.py -i config-dev.ini -o config-prod.ini -k mykey.pem -p 12345
 
 $ # Test application with non encrypted config file
 $ cat config-dev.ini
