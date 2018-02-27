@@ -22,7 +22,9 @@ class settings:
 
         key = ''
         try:
-            key = _config_instance.get('main', 'private_key')
+            key_path = _config_instance.get('main', 'private_key')
+            with open(key_path, 'r') as f:
+                key = f.read()
         except ConfigParserError:
             pass
 

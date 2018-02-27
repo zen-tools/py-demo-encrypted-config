@@ -17,12 +17,12 @@ def main(args):
         raise IOError("%s file is exist" % args.output)
 
     p_key = None
-    enc_config = ConfigParser()
     with open(args.key_file) as f:
-        key_raw = f.read()
-        p_key = PKCS1_OAEP.new(RSA.importKey(key_raw, args.password))
-        enc_config.add_section('main')
-        enc_config.set('main', 'private_key', key_raw)
+        p_key = PKCS1_OAEP.new(RSA.importKey(f.read(), args.password))
+
+    enc_config = ConfigParser()
+    enc_config.add_section('main')
+    enc_config.set('main', 'private_key', args.key_file)
 
     config = ConfigParser()
     config.read(args.source)
@@ -58,8 +58,5 @@ if __name__ == '__main__':
     try:
         parser, args = parse_args()
         main(args)
-        # rsa_key = generate_rsa_key(args.password)
-        # with open(args.key_file, 'w') as f:
-        #    f.write(rsa_key)
     except KeyboardInterrupt:
         pass
